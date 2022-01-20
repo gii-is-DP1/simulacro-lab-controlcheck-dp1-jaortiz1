@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class ProductTypeFormatter implements Formatter<ProductType>{
 
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductService productService;
     @Override
     public String print(ProductType object, Locale locale) {
         // TODO Auto-generated method stub
@@ -20,7 +20,7 @@ public class ProductTypeFormatter implements Formatter<ProductType>{
 
     @Override
     public ProductType parse(String text, Locale locale) throws ParseException {
-        ProductType p = this.productRepository.getProductType(text);
+        ProductType p = this.productService.getProductType(text);
         if(p==null) {
         	throw new ParseException(text, 0);
         }
