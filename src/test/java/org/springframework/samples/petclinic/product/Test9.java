@@ -15,11 +15,8 @@ import org.springframework.samples.petclinic.configuration.SecurityConfiguration
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+@WebMvcTest(controllers = ProductController.class, excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class), excludeAutoConfiguration = SecurityConfiguration.class)
 
-@WebMvcTest(value = ProductController.class,
-		includeFilters = @ComponentScan.Filter(value = ProductTypeFormatter.class, type = FilterType.ASSIGNABLE_TYPE),
-		excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class),
-		excludeAutoConfiguration= SecurityConfiguration.class)
 public class Test9 {
     @MockBean
 	private ProductService petService;
